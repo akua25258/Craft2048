@@ -1,0 +1,5 @@
+name: 2048Craft
+version: '${version}'
+
+main: org.akua25258.Craft2048.Craft2048
+api-version: '1.21'
