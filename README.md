@@ -11,4 +11,5 @@ English only
 akua25258 (JP) - [KumaEarth](https://kumaearth.net/) Creator
 
 # ❤️Other
+Minecraft version 1.21.8 or later is recommended.
 I drew inspiration from [a post on X](https://x.com/SmileyFace1126/status/2110424384070426989?s=20).
