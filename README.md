@@ -1,3 +1,6 @@
+# 🎲2048Craft
+![](src/media/SS1.png)
+
 # 🌎Language
 English only
 
