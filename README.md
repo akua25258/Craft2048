@@ -6,7 +6,7 @@ English only
 
 # 🏆How to Play
 1. Execute the ``/2048craft`` command.
-2. Hold down the Shift key and right-click the slot.
+2. Right-click the slot.
 3. Stack items of the same type.
 4. Repeat until the maximum stage is reached.
 
