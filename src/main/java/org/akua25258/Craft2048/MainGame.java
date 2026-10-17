@@ -22,7 +22,7 @@ import static org.bukkit.Material.*;
 
 public class MainGame
 {
-    private static final int nextStage = 10;
+    private static final int nextStage = 64;
 
     public static final Material[] itemList = {
             STICK,
