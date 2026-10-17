@@ -22,7 +22,7 @@ import static org.bukkit.Material.*;
 
 public class MainGame
 {
-    private static final int nextStage = 2;
+    private static final int nextStage = 10;
 
     public static final Material[] itemList = {
             STICK,
@@ -105,6 +105,17 @@ public class MainGame
     private void changeBossbar()
     {
         count++;
+        if (count % nextStage == 0)
+        {
+            for (short i = 0; i < 54; i++)
+            {
+                ItemStack item = menu.getItem(i);
+                if (item == null || item.getType() == Material.AIR) continue;
+                Material id = item.getType();
+                menu.setItem(i, getItem(id));
+            }
+            p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
+        }
         int stage = count / nextStage;
         if (stage > itemList.length - 4) stage = itemList.length - 4;
         String name = "§7Total:§r §a" + count + "§r §7| Stage:§r §c" + (stage + 1);
@@ -116,7 +127,9 @@ public class MainGame
         ItemMeta meta = item.getItemMeta();
         List<String> lore = new ArrayList<>();
         int lv = Arrays.asList(itemList).indexOf(id);
+        int stage = count / nextStage;
         lore.add("§fLEVEL:§r §b" + (lv + 1) + "§r§8/" + itemList.length);
+        if (lv < stage) lore.add(ChatColor.RED + "This item does not appear in the current stage.");
         if (meta != null) meta.setLore(lore);
         item.setItemMeta(meta);
 
