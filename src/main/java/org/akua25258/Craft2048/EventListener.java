@@ -25,7 +25,7 @@ public class EventListener implements Listener
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e)
     {
-        if (!e.getView().getPlayer().equals(p) || !e.getView().getTitle().equals("2048craft")) return;
+        if (!e.getView().getPlayer().equals(p) || !e.getView().getTitle().equals(game.getMenuName())) return;
 
         if (e.getClickedInventory() == e.getView().getBottomInventory() || e.getClickedInventory() == null)
         {
@@ -44,16 +44,20 @@ public class EventListener implements Listener
                 e.getView().setCursor(null);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2, 0.4f);
             }
-        } else {
+        } else if (e.getClick() == ClickType.RIGHT) {
             e.setCancelled(true);
-            game.setRandomItem();
-        }
+            if (e.getCurrentItem() == null) game.setRandomItem();
+            else {
+                e.setCurrentItem(null);
+                p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_BURN, 2, 1);
+            }
+        } else e.setCancelled(true);
     }
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e)
     {
-        if (!e.getView().getPlayer().equals(p) || !e.getView().getTitle().equals("2048craft")) return;
+        if (!e.getView().getPlayer().equals(p) || !e.getView().getTitle().equals(game.getMenuName())) return;
 
         ItemStack item = e.getView().getCursor();
         if (item != null) e.getView().setCursor(null);
