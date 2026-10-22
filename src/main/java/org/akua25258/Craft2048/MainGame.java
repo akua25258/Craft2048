@@ -105,6 +105,11 @@ public class MainGame
     private void changeBossbar()
     {
         count++;
+        double stage = (double) count / nextStage;
+        int sta = (int) stage;
+        double bar = stage;
+        bar -= (int) bar;
+
         if (count % nextStage == 0)
         {
             for (short i = 0; i < 54; i++)
@@ -115,10 +120,11 @@ public class MainGame
                 menu.setItem(i, getItem(id));
             }
             p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
-        }
-        int stage = count / nextStage;
-        if (stage > itemList.length - 4) stage = itemList.length - 4;
-        String name = "§7Total:§r §a" + count + "§r §7| Stage:§r §c" + (stage + 1);
+            Bossbar.setProgress(0);
+        } else Bossbar.setProgress(bar);
+
+        if (sta > itemList.length - 4) sta = itemList.length - 4;
+        String name = "§7Total:§r §a" + count + "§r §7| Stage:§r §c" + (sta + 1);
         Bossbar.setTitle(name);
     }
 
